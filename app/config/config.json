@@ -2,7 +2,7 @@
   "development": {
     "username": "Vivek",
     "password": "2710",
-    "database": "database_development",
+    "database": "boilerplate",
     "host": "127.0.0.1",
     "dialect": "postgresql"
   },
@@ -14,10 +14,7 @@
     "dialect": "postgresql"
   },
   "production": {
-    "username": "Vivek",
-    "password": "2710",
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "postgresql"
+    "use_env_variable":"DATABASE_URL",
+    "dialect": "mysql"
   }
 }
