@@ -1,13 +1,15 @@
 console.log("app.js")
-var models = require("./app/models");
-models.sequelize
-.sync()
-.then(() => {
-console.log('Connection has been established successfully.');
-})
-.catch(err => {
-console.error('Unable to connect to the database:', err);
-});
+const mongoose = require('mongoose');
+
+const db = require('./app/database_info/keys').mongoURI;
+
+mongoose
+  .connect(
+    db,
+    { useNewUrlParser: true }
+  )
+  .then(() => console.log('MongoDB Connected'))
+  .catch(err => console.log(err));
 require('dotenv').config()
 const expressLayouts = require('express-ejs-layouts');
 var createError = require('http-errors');
