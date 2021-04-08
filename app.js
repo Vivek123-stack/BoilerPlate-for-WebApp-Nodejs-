@@ -1,5 +1,15 @@
-require('dotenv').config()
+console.log("app.js")
 var models = require("./app/models");
+models.sequelize
+.sync()
+.then(() => {
+console.log('Connection has been established successfully.');
+})
+.catch(err => {
+console.error('Unable to connect to the database:', err);
+});
+require('dotenv').config()
+const expressLayouts = require('express-ejs-layouts');
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -9,24 +19,15 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-//sync Database
-models.sequelize
-.sync()
-.then(() => {
-console.log('Connection has been established successfully.');
-})
-.catch(err => {
-console.error('Unable to connect to the database:', err);
-});
 var app = express();
-
+app.use(expressLayouts);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -46,7 +47,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('ok');
 });
-
+console.log("app.js")
 module.exports = app;

@@ -1,6 +1,6 @@
 module.exports = {
     getUsers(req, res) {
-        res.json({ status: "success", message: "Welcome To NorthStar Inovation" });
+        res.json({ status: "success", message: "Welcome to Blockchain Technology!!!" });
     },
     addTwoNumbers(req,res){
         const { num1, num2 } = req.body;
