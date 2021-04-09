@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 
 const db = require('./app/database_info/keys').mongoURI;
 
+//db setup
 mongoose
   .connect(
     db,
@@ -10,6 +11,7 @@ mongoose
   )
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
+  
 require('dotenv').config()
 const expressLayouts = require('express-ejs-layouts');
 var createError = require('http-errors');
